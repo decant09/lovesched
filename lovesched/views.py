@@ -1,4 +1,10 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from django.conf import settings
+
+
+def debug_static_url(request):
+    return HttpResponse(f"STATIC_URL is set to: {settings.STATIC_URL}")
 
 
 def handler404(request, exception):

@@ -20,7 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from .views import handler404, handler403, handler500
 from django.http import HttpResponseRedirect
-
+from . import views
 
 def redirect_favicon(request):
     return HttpResponseRedirect(
@@ -28,8 +28,8 @@ def redirect_favicon(request):
         "static/favicon/favicon-32x32.9fe1b5dd4cdf.png"
     )
 
-
 urlpatterns = [
+    path('debug-static/', views.debug_static_url),  # Debug static URL endpoint
     path('', include('event.urls')),
     path('profile/', include('profiles.urls')),
     path('', include('landing.urls')),
