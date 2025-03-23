@@ -19,6 +19,15 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import handler404, handler403, handler500
+from django.http import HttpResponseRedirect
+
+
+def redirect_favicon(request):
+    return HttpResponseRedirect(
+        "https://res.cloudinary.com/dfsv2olye/image/upload/v1742755930/"
+        "static/favicon/favicon-32x32.9fe1b5dd4cdf.png"
+    )
+
 
 urlpatterns = [
     path('', include('event.urls')),
@@ -26,6 +35,7 @@ urlpatterns = [
     path('', include('landing.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path("favicon.ico", redirect_favicon),
 ]
 
 if settings.DEBUG:
