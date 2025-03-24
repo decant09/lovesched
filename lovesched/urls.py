@@ -36,6 +36,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path("favicon.ico", redirect_favicon),
+    path('debug-500/', views.debug_500),
+
 ]
 
 if settings.DEBUG:
